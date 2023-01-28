@@ -1,0 +1,78 @@
+<h1>Datatable - search, pagination, enitites(rows)</h1>
+<!-- <div>
+    <h3>1.Install the following packages:</h3>
+    npm i angular-datatables
+    npm install jquery --save
+    npm install datatables.net --save
+    npm install datatables.net-dt --save
+    npm install angular-datatables --save
+    npm install @types/jquery --save-dev
+    npm install @types/datatables.net --save-dev
+</div>
+<div>
+    <h3>2.Add the dependencies in the scripts and styles attributes to angular.json:</h3>
+    "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+    "node_modules/jquery/dist/jquery.js",
+    "node_modules/datatables.net/js/jquery.dataTables.js"
+</div>
+<div>
+    <h3>3.Import the DataTablesModule at the appropriate level of your app.</h3>
+</div>
+<div>
+    4.If Nothing works reffer to :
+    https://stackoverflow.com/questions/70014280/facing-error-while-using-angular-datatables
+    npm uninstall angular-datatables
+    npm install angular-datatables@6.0.0
+    npm start
+</div> -->
+<br>
+<div class="table-responsive">
+    <table datatable [dtOptions]="dtOptions" class="table align-middle mb-0 table-hover" id=""
+        *ngIf="isDataTableLoaded">
+        <thead class="table-light">
+            <tr> 
+                <th>#</th>
+                <th>Category</th>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Description</th>
+                <th>Created</th>
+                <th>Modified</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prod of prodList;let i =index;">
+                <td>
+                    {{i+1}}
+                </td>
+                <td>
+                    {{prod.product_category_title ? (prod.product_category_title | titlecase) : "N/A"}}
+                </td>
+                <td>
+                    {{prod.product_name ? (prod.product_name | titlecase) : "N/A"}}
+                </td>
+                <td>
+                    {{prod.product_code ? (prod.product_code | uppercase) : "N/A"}}
+                </td>
+                <td>
+                    {{prod.meta_description ? (prod.meta_description | titlecase) : "N/A"}}
+                </td>
+                <td>
+                    {{prod.created ? (prod.created | date) : "N/A"}}
+                </td>
+                <td>
+                    {{prod.modified ? (prod.modified | date) : "N/A"}}
+                </td>
+                <td>
+                    <div *ngIf="prod.status" style="cursor:pointer">
+                        <span>Activated</span>
+                    </div>
+                    <div *ngIf="!prod.status" style="cursor:pointer">
+                        <span>Deactivated</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
